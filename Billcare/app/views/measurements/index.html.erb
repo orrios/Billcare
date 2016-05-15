@@ -1,0 +1,323 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="im-centered">
+
+  <div class="row row-centered" >
+    <div id="column1" class="col-xs-12 col-sm-6 col-md-3 col-centered"></div>
+
+
+    <div id="column2" class="col-xs-6 col-md-3 col-centered"></div>
+  </div>
+
+  <div id="container1" style="width:90%;height:500px;float: none; margin: 0 auto;"></div>
+</div>
+
+
+
+
+
+
+
+<script>$(document).ready(function () {
+  chart = new Highcharts.Chart({
+    chart: {
+      renderTo: 'container1',
+      type: 'area'
+    },
+    credits: {
+      enabled: false
+    },
+    title: {
+      text: 'Consumo del mes actual',
+      style: {"color": "#7070", "fontWeight": "bold"}
+    },
+    subtitle: {
+      text: ''
+    },
+    xAxis: {
+
+      type: 'datetime'
+
+    },
+    yAxis: {
+      title: {
+        text: 'Cantidad Consumida',
+        style: {"color": "#7070", "fontWeight": "bold"}
+      }
+    },
+    plotOptions: {
+      series: {
+        marker: {
+          enabled: false,
+          symbol: 'circle',
+          turboThreshold: 0,
+          radius: 2
+        },
+
+        fillOpacity: 0.5
+      },
+      flags: {
+        tooltip: {
+          xDateFormat: '%B %e, %Y'
+        }
+      }
+    },
+
+
+    series: [{
+      color: "red",
+      name: 'Limite establecido',
+      type: "line",
+      data: <%= @data2.to_json.html_safe %>,
+      enableMouseTracking: false
+
+    }, {
+      name: 'Consumo',
+      data: <%= @data1.to_json.html_safe %>,
+      turboThreshold: 0
+    },
+      {color: "orange",
+      name: 'Maximo optimo en el tiempo',
+      type: "line",
+      enableMouseTracking: false,
+      data: <%= @data3.to_json.html_safe %>
+
+
+      }
+
+    ]
+  });
+
+});
+
+</script>
+
+
+
+
+<script>$(document).ready(function () {
+  chart = new Highcharts.Chart({
+    chart: {
+      renderTo: 'column1',
+      type: 'gauge',
+
+      plotBackgroundColor: null,
+      plotBackgroundImage: null,
+      plotBorderWidth: 0,
+      plotShadow: false,
+      events: {
+        load: function () {
+
+          // set up the updating of the chart every 10 seconds
+          var series = this.series[0];
+          setInterval(function () {
+                y = Math.random()*80;
+            series.addPoint([<%= Measurement.last.value %>], true, true);
+          }, 10000);
+        }
+      }
+  },
+    title: {
+      text: 'Consumo actual',
+      margin: 0
+    },
+    pane: {
+      startAngle: -150,
+      endAngle: 150,
+      background: [{
+        backgroundColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+          stops: [
+            [0, '#FFF'],
+            [1, '#333']
+          ]
+        },
+        borderWidth: 0,
+        outerRadius: '109%'
+      }, {
+        backgroundColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+          stops: [
+            [0, '#333'],
+            [1, '#FFF']
+          ]
+        },
+        borderWidth: 1,
+        outerRadius: '107%'
+      }, {
+        // default background
+      }, {
+        backgroundColor: '#DDD',
+        borderWidth: 0,
+        outerRadius: '105%',
+        innerRadius: '103%'
+      }]
+    },
+
+    subtitle: {
+      text: ''
+    },
+
+    yAxis: {
+      min: 0,
+      max: 90,
+
+      minorTickInterval: 'auto',
+      minorTickWidth: 1,
+      minorTickLength: 5,
+      minorTickPosition: 'inside',
+      minorTickColor: '#666',
+
+      tickPixelInterval: 15,
+      tickWidth: 2,
+      tickPosition: 'inside',
+      tickLength: 10,
+      tickColor: '#666',
+      labels: {
+        step: 3,
+        rotation: 'auto'
+      },
+      title: {
+        text: 'Amperes'
+      },
+      plotBands: [{
+        from: 0,
+        to: 18,
+        color: '#55BF3B' // green
+      }, {
+        from: 18,
+        to: 72,
+        color: '#DDDF0D' // yellow
+      }, {
+        from: 72,
+        to: 90,
+        color: '#DF5353' // red
+      }]
+    },
+    credits: {
+      enabled: false
+    },
+
+    series: [{
+      name: 'Speed',
+      enableMouseTracking: false,
+      data: [<%= Measurement.last.value %>],
+      tooltip: {
+        valueSuffix: ' Amperes'
+      }
+    }]
+  });
+
+});
+
+</script>
+
+
+
+
+
+<script>$(document).ready(function () {
+  chart = new Highcharts.Chart({
+    chart: {
+      renderTo: 'column2',
+      type: 'gauge',
+      plotBackgroundColor: null,
+      plotBackgroundImage: null,
+      plotBorderWidth: 0,
+      plotShadow: false
+    },
+    title: {
+      text: 'Consumo actual',
+      margin: 0
+    },
+    pane: {
+      startAngle: -150,
+      endAngle: 150,
+      background: [{
+        backgroundColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+          stops: [
+            [0, '#FFF'],
+            [1, '#333']
+          ]
+        },
+        borderWidth: 0,
+        outerRadius: '109%'
+      }, {
+        backgroundColor: {
+          linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+          stops: [
+            [0, '#333'],
+            [1, '#FFF']
+          ]
+        },
+        borderWidth: 1,
+        outerRadius: '107%'
+      }, {
+        // default background
+      }, {
+        backgroundColor: '#DDD',
+        borderWidth: 0,
+        outerRadius: '105%',
+        innerRadius: '103%'
+      }]
+    },
+
+    subtitle: {
+      text: ''
+    },
+
+    yAxis: {
+      min: 0,
+      max: 90,
+
+      minorTickInterval: 'auto',
+      minorTickWidth: 1,
+      minorTickLength: 5,
+      minorTickPosition: 'inside',
+      minorTickColor: '#666',
+
+      tickPixelInterval: 15,
+      tickWidth: 2,
+      tickPosition: 'inside',
+      tickLength: 10,
+      tickColor: '#666',
+      labels: {
+        step: 3,
+        rotation: 'auto'
+      },
+      title: {
+        text: 'Amperes'
+      },
+      plotBands: [{
+        from: 0,
+        to: 18,
+        color: '#55BF3B' // green
+      }, {
+        from: 18,
+        to: 72,
+        color: '#DDDF0D' // yellow
+      }, {
+        from: 72,
+        to: 90,
+        color: '#DF5353' // red
+      }]
+    },
+    credits: {
+      enabled: false
+    },
+
+    series: [{
+      name: 'Speed',
+      enableMouseTracking: false,
+      data: [80],
+      tooltip: {
+        valueSuffix: ' Amperes'
+      }
+    }]
+  });
+
+});
+
+</script>
+
