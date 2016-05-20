@@ -47,6 +47,11 @@ class MeasurementsController < ApplicationController
       ordered = Measurement.all.sort_by do |item|
         item.time
       end
+      if ordered.last.time == params[:time].to_i
+        render :nothing => true
+        return
+      end
+
       Measurement.create :value => params[:value].to_f*4*220/(1000*3600)+ordered.last.value.to_f, :time => params[:time].to_i # *4*220/(1000*3600) es para transformar a Kw/h
       if Measurement.last.time - Measurement.first.time > 300
         Measurement.delete_all
