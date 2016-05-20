@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511225545) do
+ActiveRecord::Schema.define(version: 20160515194036) do
 
   create_table "measurements", force: :cascade do |t|
     t.integer  "biller_id"
-    t.integer  "value"
     t.integer  "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "value"
   end
 
 end

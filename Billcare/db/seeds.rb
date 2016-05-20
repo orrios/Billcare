@@ -7,6 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-1440.times do |i|
-  Measurement.create([{value: Faker::Commerce.price, time: Faker::Time.between(1.days.ago, Date.today, :all).utc}])
-end
+Measurement.create([{value: 0, time: Time.now}])

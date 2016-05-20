@@ -6,7 +6,7 @@
     <div id="column1" class="col-xs-12 col-sm-6 col-md-3 col-centered"></div>
 
 
-    <div id="column2" class="col-xs-6 col-md-3 col-centered"></div>
+    <div id="column2" class="col-xs-12 col-sm-6 col-md-3 col-centered"></div>
   </div>
 
   <div id="container1" style="width:90%;height:500px;float: none; margin: 0 auto;"></div>
@@ -28,20 +28,25 @@
       enabled: false
     },
     title: {
-      text: 'Consumo del mes actual',
+      text: 'Consumo del mes actual (kWh)',
       style: {"color": "#7070", "fontWeight": "bold"}
     },
     subtitle: {
       text: ''
     },
     xAxis: {
+      max: <%= @max_time %>,
+      type: 'datetime',
+      title: {
+        text: 'Tiempo',
+        style: {"color": "#7070", "fontWeight": "bold"}
+      }
 
-      type: 'datetime'
 
     },
     yAxis: {
       title: {
-        text: 'Cantidad Consumida',
+        text: 'Cantidad Consumida (kWh)',
         style: {"color": "#7070", "fontWeight": "bold"}
       }
     },
@@ -105,20 +110,20 @@
       plotBackgroundImage: null,
       plotBorderWidth: 0,
       plotShadow: false,
-      events: {
-        load: function () {
-
+      //events: {
+      //  load: function () {
+//
           // set up the updating of the chart every 10 seconds
-          var series = this.series[0];
-          setInterval(function () {
-                y = Math.random()*80;
-            series.addPoint([<%= Measurement.last.value %>], true, true);
-          }, 10000);
-        }
-      }
+  //        var series = this.series[0];
+    //      setInterval(function () {
+      //          y = Math.random()*80;
+        //    series.addPoint([<%= Measurement.last.value %>], true, true);
+      //    }, 10000);
+     //   }
+   //   }
   },
     title: {
-      text: 'Consumo actual',
+      text: 'Corriente Actual',
       margin: 0
     },
     pane: {
@@ -160,7 +165,7 @@
 
     yAxis: {
       min: 0,
-      max: 90,
+      max: 30,
 
       minorTickInterval: 'auto',
       minorTickWidth: 1,
@@ -182,15 +187,15 @@
       },
       plotBands: [{
         from: 0,
-        to: 18,
+        to: 10,
         color: '#55BF3B' // green
       }, {
-        from: 18,
-        to: 72,
+        from: 10,
+        to: 20,
         color: '#DDDF0D' // yellow
       }, {
-        from: 72,
-        to: 90,
+        from: 20,
+        to: 30,
         color: '#DF5353' // red
       }]
     },
@@ -201,7 +206,8 @@
     series: [{
       name: 'Speed',
       enableMouseTracking: false,
-      data: [<%= Measurement.last.value %>],
+      data: [<%= ((((Measurement.last.value-Measurement.last(2).first.value)*1000*3600/(4*220))*10).round)/10.0 #redondeado
+  %>],
       tooltip: {
         valueSuffix: ' Amperes'
       }
@@ -227,7 +233,7 @@
       plotShadow: false
     },
     title: {
-      text: 'Consumo actual',
+      text: 'Costo por minuto del consumo acutal ($112,36 pesos el kWh)',
       margin: 0
     },
     pane: {
@@ -269,7 +275,7 @@
 
     yAxis: {
       min: 0,
-      max: 90,
+      max: 4,
 
       minorTickInterval: 'auto',
       minorTickWidth: 1,
@@ -287,19 +293,19 @@
         rotation: 'auto'
       },
       title: {
-        text: 'Amperes'
+        text: 'Precio (CLP)'
       },
       plotBands: [{
         from: 0,
-        to: 18,
+        to: 1,
         color: '#55BF3B' // green
       }, {
-        from: 18,
-        to: 72,
+        from: 1,
+        to: 2,
         color: '#DDDF0D' // yellow
       }, {
-        from: 72,
-        to: 90,
+        from: 2,
+        to: 4,
         color: '#DF5353' // red
       }]
     },
@@ -310,7 +316,8 @@
     series: [{
       name: 'Speed',
       enableMouseTracking: false,
-      data: [80],
+      data: [<%= ((((Measurement.last.value-Measurement.last(2).first.value))*112.360)*15).round(2)
+  %>],
       tooltip: {
         valueSuffix: ' Amperes'
       }
