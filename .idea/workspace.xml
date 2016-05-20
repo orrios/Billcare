@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24aeac4e-868f-4389-9fca-aef851085e71" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/.idea/Billcare.iml" afterPath="$PROJECT_DIR$/Billcare/.idea/Billcare.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Billcare/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/app/controllers/measurements_controller.rb" afterPath="$PROJECT_DIR$/Billcare/app/controllers/measurements_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/Billcare/app/views/layouts/application.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/app/views/measurements/index.html.erb" afterPath="$PROJECT_DIR$/Billcare/app/views/measurements/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/db/schema.rb" afterPath="$PROJECT_DIR$/Billcare/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Billcare/db/seeds.rb" afterPath="$PROJECT_DIR$/Billcare/db/seeds.rb" />
     </list>
     <ignored path="Billcare.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +26,8 @@
       <file leaf-file-name="measurements_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Billcare/app/controllers/measurements_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state relative-caret-position="382">
+              <caret line="52" column="103" selection-start-line="52" selection-start-column="103" selection-end-line="52" selection-end-column="103" />
               <folding />
             </state>
           </provider>
@@ -223,12 +217,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1463704661372</updated>
-      <workItem from="1463704662592" duration="1241000" />
+      <workItem from="1463704662592" duration="3225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1241000" />
+    <option name="totallyTimeSpent" value="3225000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -263,8 +257,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Billcare/app/controllers/measurements_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+        <state relative-caret-position="382">
+          <caret line="52" column="103" selection-start-line="52" selection-start-column="103" selection-end-line="52" selection-end-column="103" />
           <folding />
         </state>
       </provider>
