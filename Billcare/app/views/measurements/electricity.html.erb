@@ -1,25 +1,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <div class="im-centered">
+  <h2>Cantidad consumida de electricidad en el mes</h2><h4> (costo de la cuenta (pesos) / límite establecido (pesos))</h4> <br>
+
   <div class="row row-centered" >
-    <h2>Cantidad consumida de electricidad en el mes</h2><h4> (costo de la cuenta (pesos) / límite establecido (pesos))</h4> <br>
-
-    <div class="col-md-2 col-centered"><div class="round_border_electricity"><div class="text-center">
-      <b>Electricidad</b> <br>
-    <%= @data1[-1][:y] %> / 5.6
-
-    </div><div id="report_electricidad"></div></div></div>
-
-  </div>
-<br><br><br>
-  <div class="row row-centered" >
-
     <div id="column1" class="col-xs-12 col-sm-6 col-md-3 col-centered"></div>
 
 
     <div id="column2" class="col-xs-12 col-sm-6 col-md-3 col-centered"></div>
   </div>
-<br><br>
+
   <div id="container1" style="width:90%;height:500px;float: none; margin: 0 auto;"></div>
 </div>
 
@@ -135,7 +125,6 @@
   },
     title: {
       text: 'Consumo actual de corriente',
-      style: {"color": "#7070", "fontWeight": "bold"},
       margin: 0
     },
     pane: {
@@ -246,7 +235,6 @@
     },
     title: {
       text: 'Costo por minuto del consumo actual ($112,36 pesos el kWh)',
-      style: {"color": "#7070", "fontWeight": "bold"},
       margin: 0
     },
     pane: {

@@ -17,12 +17,12 @@ class MeasurementsController < ApplicationController
     end
 
     @data1 = Measurement.all.sort_by{|measure| measure.time}
-    @data1 = @data1.map {|measure| {x: measure.time*1000, y:measure.value}}
+    @data1 = @data1.map {|measure| {x: measure.time*1000, y:(measure.value*112.360).round(2)}}
     @data1 = @data1
     @min_time = @data1.first[:x]
     @max_time = @min_time+(1000*60*5) #los 1000 es un segundo. se quieren ver 5 minutos
-    @data2 = [[@min_time,0.05],[@max_time, 0.05]]
-    @data3 = [[@min_time, 0],[@max_time, 0.05]]
+    @data2 = [[@min_time,0.05*112.360],[@max_time, 0.05*112.360]]
+    @data3 = [[@min_time, 0],[@max_time, 0.05*112.360]]
 
     render :index
   end
@@ -34,7 +34,21 @@ class MeasurementsController < ApplicationController
   def new
     @measurement = measurement.new
   end
-  def asd
+
+  def summary
+
+    if Measurement.first
+    else
+      Measurement.create([{value: 0, time: Time.now}])
+    end
+
+    @data1 = Measurement.all.sort_by{|measure| measure.time}
+    @data1 = @data1.map {|measure| {x: measure.time*1000, y:(measure.value*112.360).round(2)}}
+    @data1 = @data1
+    @min_time = @data1.first[:x]
+    @max_time = @min_time+(1000*60*5) #los 1000 es un segundo. se quieren ver 5 minutos
+    @data2 = [[@min_time,0.05*112.360],[@max_time, 0.05*112.360]]
+    @data3 = [[@min_time, 0],[@max_time, 0.05*112.360]]
 
   end
 

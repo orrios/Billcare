@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+.round_border_electricity {
+  /* set border styling */
+  border-color: gray;
+  border-style: groove;
+  border-width: 2px;
+  background:rgba(251,255,25,0.7);
+  /* set border roundness */
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+.round_border_gas {
+  /* set border styling */
+  border-color: gray;
+  border-style: groove;
+  border-width: 2px;
+  background:rgba(2,227,6,0.5);
+  /* set border roundness */
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
+
+.round_border_water {
+  /* set border styling */
+  border-color: gray;
+  border-style: groove;
+  border-width: 2px;
+  background:rgba(0,215,219,0.5);
+  /* set border roundness */
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+}
